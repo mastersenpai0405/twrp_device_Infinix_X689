@@ -46,7 +46,6 @@ BOARD_KERNEL_TAGS_OFFSET := 0x0bc08000
 
 TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/kernel.gz
 TARGET_PREBUILT_DTB := $(DEVICE_PATH)/prebuilt/dtb.img
-BOARD_PREBUILT_DTBOIMAGE := $(DEVICE_PATH)/prebuilt/dtbo.img
 
 BOARD_INCLUDE_RECOVERY_DTBO := true
 BOARD_KERNEL_IMAGE_NAME := Image.gz
@@ -108,7 +107,6 @@ TARGET_USERIMAGES_USE_EXT4 := true
 
 # AB Gaming
 AB_OTA_UPDATER := true
-BOARD_USES_RECOVERY_AS_BOOT := true
 
 # Workaround for copying error vendor files to recovery ramdisk
 TARGET_COPY_OUT_PRODUCT := product
