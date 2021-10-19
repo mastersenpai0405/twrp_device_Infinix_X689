@@ -25,7 +25,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_keys.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota.mk)
 
 # Inherit from rosemary device
-$(call inherit-product, device/xiaomi/rosemary/device.mk)
+$(call inherit-product, device/infinix/X689/device.mk)
 
 # Inherit some common TWRP? stuff.
 $(call inherit-product, vendor/twrp/config/common.mk)
