@@ -14,7 +14,7 @@
 # limitations under the License.
 #
 
-DEVICE_PATH := device/Infinix/X689
+DEVICE_PATH := device/infinix/X689
 
 # Architecture
 TARGET_ARCH := arm64
@@ -105,7 +105,7 @@ BOARD_PRODUCTIMAGE_FILE_SYSTEM_TYPE := ext4
 TARGET_USERIMAGES_USE_F2FS := true
 TARGET_USERIMAGES_USE_EXT4 := true
 
-# AB Gaming
+# AB
 AB_OTA_UPDATER := true
 
 # Workaround for copying error vendor files to recovery ramdisk
