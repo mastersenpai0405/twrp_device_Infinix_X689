@@ -2,7 +2,8 @@ import /microtrust.rc
 
 on init
     export LD_LIBRARY_PATH /vendor/lib64:/vendor/lib64/hw:/system/lib64:/system/lib64/hw
-
+    start vold
+    
 on post-fs
     # Support A/B feature for EMMC and UFS boot region
     symlink /dev/block/sda /dev/block/mmcblk0boot0
@@ -49,6 +50,9 @@ service keymaster-4-0 /vendor/bin/android.hardware.keymaster@4.0-service.beanpod
     disabled
     oneshot
     seclabel u:r:recovery:s0
+
+on property:vendor.sys.listener.registered=true
+    start gatekeeper-1-0
 
 on property:hwservicemanager.ready=true
     start keymaster-4-0
