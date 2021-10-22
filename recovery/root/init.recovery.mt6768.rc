@@ -2,7 +2,9 @@ import /microtrust.rc
 
 on init
     export LD_LIBRARY_PATH /vendor/lib64:/vendor/lib64/hw:/system/lib64:/system/lib64/hw
-    
+    mkdir /mnt/vendor/persist 0700 root root
+    mount ext4 /dev/block/platform/bootdevice/by-name/persist /mnt/vendor/persist
+
 on post-fs
     # Support A/B feature for EMMC and UFS boot region
     symlink /dev/block/sda /dev/block/mmcblk0boot0
@@ -23,6 +25,7 @@ service mtk.plpath.utils.link /system/bin/mtk_plpath_utils
 
 on fs
     install_keyring
+    setprop crypto.ready 1
     
 service keystore_auth /system/bin/keystore_auth
     oneshot
