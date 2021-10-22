@@ -2,7 +2,6 @@ import /microtrust.rc
 
 on init
     export LD_LIBRARY_PATH /vendor/lib64:/vendor/lib64/hw:/system/lib64:/system/lib64/hw
-    start vold
     
 on post-fs
     # Support A/B feature for EMMC and UFS boot region
@@ -62,19 +61,16 @@ on property:ro.crypto.state=unsupported
     stop teei_daemon
     stop keymaster-4-0
     stop gatekeeper-1-0
-    stop hwservicemanager
     
 on property:ro.crypto.state=unencrypted
     stop teei_daemon
     stop keymaster-4-0
     stop gatekeeper-1-0
-    stop hwservicemanager
         
 on property:twrp.decrypt.done=true
     stop teei_daemon
     stop keymaster-4-0
     stop gatekeeper-1-0
-    stop hwservicemanager
     
 on boot
      start boot-hal-1-1
