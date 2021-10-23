@@ -1,8 +1,4 @@
 import /microtrust.rc
-
-# We need vold early for metadata encryption
-on early-fs
-    start vold
     
 on init
     export LD_LIBRARY_PATH /vendor/lib64:/vendor/lib64/hw:/system/lib64:/system/lib64/hw
@@ -44,13 +40,13 @@ service keystore /system/bin/keystore /tmp/misc/keystore
     disabled
     seclabel u:r:recovery:s0
 
-service gatekeeper-1-0 /vendor/bin/android.hardware.gatekeeper@1.0-service
+service gatekeeper-1-0 /system/bin/android.hardware.gatekeeper@1.0-service
     user root
     group root
     disabled
     seclabel u:r:recovery:s0
 
-service keymaster-4-0 /vendor/bin/android.hardware.keymaster@4.0-service.beanpod
+service keymaster-4-0 /system/bin/android.hardware.keymaster@4.0-service.beanpod
     user root
     group root drmrpc
     disabled
