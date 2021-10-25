@@ -2,6 +2,7 @@ import /microtrust.rc
     
 on init
     export LD_LIBRARY_PATH /vendor/lib64:/vendor/lib64/hw:/system/lib64:/system/lib64/hw
+    symlink /dev/block/platform/bootdevice /dev/block/bootdevice
     mkdir /mnt/vendor/persist 0700 root root
     mount ext4 /dev/block/platform/bootdevice/by-name/persist /mnt/vendor/persist
 
