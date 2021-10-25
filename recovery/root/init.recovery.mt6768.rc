@@ -26,7 +26,6 @@ service mtk.plpath.utils.link /system/bin/mtk_plpath_utils
 
 on fs
     install_keyring
-    setprop crypto.ready 1
     
 service keystore_auth /system/bin/keystore_auth
     oneshot
@@ -51,8 +50,10 @@ service keymaster-4-0 /system/bin/android.hardware.keymaster@4.0-service.beanpod
     user root
     group root drmrpc
     disabled
-    oneshot
     seclabel u:r:recovery:s0
+
+on property:vendor.sys.listener.registered=true
+    start gatekeeper-1-0
 
 on property:hwservicemanager.ready=true
     start keymaster-4-0
