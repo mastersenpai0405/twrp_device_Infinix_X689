@@ -109,7 +109,7 @@ on load_persist_props_action
     chown system system /data/vendor/key_provisioning
     write /proc/bootprof "start teei cfg end (on load_persist_props_action)"
 
-on property:crypto.ready=1
+on post-fs-data
     write /proc/bootprof "start teei cfg (on trigger_restart_framework)"
     mkdir /data/vendor/thh
     mkdir /data/vendor/thh/system
