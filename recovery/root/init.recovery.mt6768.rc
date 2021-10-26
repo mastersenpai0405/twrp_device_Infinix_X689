@@ -53,7 +53,7 @@ service keymaster-4-0 /system/bin/android.hardware.keymaster@4.0-service.beanpod
     seclabel u:r:recovery:s0
 
 on property:vendor.sys.listener.registered=true
-    start gatekeeper-1-0
+    start keymaster-4-0
 
 on property:hwservicemanager.ready=true
     start keymaster-4-0

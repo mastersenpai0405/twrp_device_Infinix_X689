@@ -116,6 +116,7 @@ TARGET_COPY_OUT_VENDOR := vendor
 # Crypto
 TW_INCLUDE_CRYPTO := true
 TW_INCLUDE_CRYPTO_FBE := true
+BOARD_USES_METADATA_DECRYPT := true
 
 # Additional binaries & libraries needed for recovery
 TARGET_RECOVERY_DEVICE_MODULES += \
