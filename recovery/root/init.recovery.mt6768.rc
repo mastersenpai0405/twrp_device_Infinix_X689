@@ -26,6 +26,8 @@ service mtk.plpath.utils.link /system/bin/mtk_plpath_utils
 
 on fs
     install_keyring
+    start boot-hal-1-1
+    start transtorage
     
 service keystore_auth /system/bin/keystore_auth
     oneshot
@@ -40,6 +42,12 @@ service keystore /system/bin/keystore /tmp/misc/keystore
     disabled
     seclabel u:r:recovery:s0
 
+service transtorage /vendor/bin/hw/vendor.storage@1.0-service
+     user root
+     group root
+     disabled
+     seclabel u:r:recovery:s0
+
 service gatekeeper-1-0 /system/bin/android.hardware.gatekeeper@1.0-service
     user root
     group root
@@ -52,9 +60,6 @@ service keymaster-4-0 /system/bin/android.hardware.keymaster@4.0-service.beanpod
     disabled
     seclabel u:r:recovery:s0
 
-on property:vendor.sys.listener.registered=true
-    start keymaster-4-0
-
 on property:hwservicemanager.ready=true
     start keymaster-4-0
     start gatekeeper-1-0
@@ -63,17 +68,22 @@ on property:ro.crypto.state=unsupported
     stop teei_daemon
     stop keymaster-4-0
     stop gatekeeper-1-0
+    stop hwservicemanager
+    stop servicemanager
     
 on property:ro.crypto.state=unencrypted
     stop teei_daemon
     stop keymaster-4-0
     stop gatekeeper-1-0
+    stop hwservicemanager
+    stop servicemanager
         
 on property:twrp.decrypt.done=true
     stop teei_daemon
     stop keymaster-4-0
     stop gatekeeper-1-0
+    stop hwservicemanager
+    stop servicemanager
     
 on boot
-     start boot-hal-1-1
      start health-hal-2-1
