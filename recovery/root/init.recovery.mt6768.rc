@@ -42,7 +42,7 @@ service keystore /system/bin/keystore /tmp/misc/keystore
     disabled
     seclabel u:r:recovery:s0
 
-service transtorage /vendor/bin/hw/vendor.storage@1.0-service
+service transtorage /system/bin/vendor.storage@1.0-service
      user root
      group root
      disabled
