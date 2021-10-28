@@ -27,7 +27,6 @@ service mtk.plpath.utils.link /system/bin/mtk_plpath_utils
 on fs
     install_keyring
     start boot-hal-1-1
-    start transtorage
     
 service keystore_auth /system/bin/keystore_auth
     oneshot
@@ -66,21 +65,25 @@ on property:vendor.sys.listener.registered=true
 on property:hwservicemanager.ready=true
     start keymaster-4-0
     start gatekeeper-1-0
+    start transtorage
    
 on property:ro.crypto.state=unsupported
     stop teei_daemon
     stop keymaster-4-0
     stop gatekeeper-1-0
+    stop transtorage
       
 on property:ro.crypto.state=unencrypted
     stop teei_daemon
     stop keymaster-4-0
     stop gatekeeper-1-0
+    stop transtorage
           
 on property:twrp.decrypt.done=true
     stop teei_daemon
     stop keymaster-4-0
     stop gatekeeper-1-0
-      
+    stop transtorage
+    
 on boot
      start health-hal-2-1
