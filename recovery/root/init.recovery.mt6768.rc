@@ -38,12 +38,6 @@ service keystore /system/bin/keystore /tmp/misc/keystore
     disabled
     seclabel u:r:recovery:s0
 
-service transtorage /system/bin/vendor.storage@1.0-service
-     user root
-     group root
-     disabled
-     seclabel u:r:recovery:s0
-
 service gatekeeper-1-0 /system/bin/android.hardware.gatekeeper@1.0-service
     user root
     group root
@@ -62,25 +56,21 @@ on property:vendor.sys.listener.registered=true
 on property:hwservicemanager.ready=true
     start keymaster-4-0
     start gatekeeper-1-0
-    start transtorage
    
 on property:ro.crypto.state=unsupported
     stop teei_daemon
     stop keymaster-4-0
     stop gatekeeper-1-0
-    stop transtorage
       
 on property:ro.crypto.state=unencrypted
     stop teei_daemon
     stop keymaster-4-0
     stop gatekeeper-1-0
-    stop transtorage
-          
+    
 on property:twrp.decrypt.done=true
     stop teei_daemon
     stop keymaster-4-0
     stop gatekeeper-1-0
-    stop transtorage
     
 on boot
      start health-hal-2-1
