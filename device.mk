@@ -44,8 +44,7 @@ ENABLE_VIRTUAL_AB := true
 # Boot control HAL
 PRODUCT_PACKAGES += \
     android.hardware.boot@1.1-impl-recovery \
-    android.hardware.boot@1.1-impl \
-    bootctrl.$(PRODUCT_PLATFORM).recovery
+    android.hardware.boot@1.1-impl
 
 PRODUCT_PACKAGES_DEBUG += \
     update_engine_client
@@ -54,19 +53,13 @@ PRODUCT_PACKAGES += \
     otapreopt_script \
     update_engine \
     update_verifier \
-    update_engine_sideload \
-    bootctl
+    update_engine_sideload
 
 # VNDK
 PRODUCT_TARGET_VNDK_VERSION := 30
 
 # API
 PRODUCT_SHIPPING_API_LEVEL := 30
- 
-# Health Hal
-PRODUCT_PACKAGES += \
-     android.hardware.health@2.1-impl-recovery \
-     android.hardware.health@2.1-impl
 
 TW_OVERRIDE_SYSTEM_PROPS := \
     "ro.build.product;ro.build.fingerprint;ro.build.version.incremental;ro.product.device=ro.product.system.device;ro.product.model=ro.product.system.model;ro.product.name=ro.product.system.name"
